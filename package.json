@@ -17,9 +17,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:hexlet-components/projects-frontend-l4-server.git"
+    "url": "git@github.com:clickf5/frontend-project-lvl4.git"
   },
-  "author": "Kirill Mokevnin",
+  "author": "Eugene Panin",
   "license": "ISC",
   "homepage": "",
   "dependencies": {
