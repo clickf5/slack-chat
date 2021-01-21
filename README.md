@@ -4,6 +4,10 @@
 
 * [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
 
+## Heroku
+
+* [Open app](https://vast-bastion-12974.herokuapp.com/)
+
 ## Install
 
 ```sh
