@@ -2,26 +2,24 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
 import '../assets/application.scss';
 
-// @ts-ignore
-import gon from 'gon';
-
 import App from './App.jsx';
+import getStore from './redux/store.js';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
 }
 
-const { channels, currentChannelId } = gon;
+const store = getStore();
 
 ReactDOM.render(
-  <App channels={channels} currentChannelId={currentChannelId} />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('chat'),
 );
-
-// console.log('it works!');
-console.log('gon', gon);

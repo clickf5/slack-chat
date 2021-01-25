@@ -1,5 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import cn from 'classnames';
+
+const mapStateToProps = (state) => {
+  const { channels, currentChannelId } = state;
+  const props = {
+    channels,
+    currentChannelId,
+  };
+  return props;
+};
 
 const renderChannels = (channels, currentChannelId) => channels.map((channel) => {
   const { id, name } = channel;
@@ -32,4 +42,4 @@ const App = (props) => {
   );
 };
 
-export default App;
+export default connect(mapStateToProps)(App);
