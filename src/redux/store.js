@@ -16,9 +16,16 @@ const preloadedState = {
   messages: gon.messages,
 };
 
+// eslint-disable-next-line functional/no-let
+let devTools = false;
+if (process.env.NODE_ENV !== 'production') {
+  devTools = true;
+}
+
 const getStore = () => configureStore({
   reducer,
   preloadedState,
+  devTools,
 });
 
 export default getStore;
