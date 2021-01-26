@@ -10,7 +10,7 @@ import '../assets/application.scss';
 
 import App from './App.jsx';
 import getStore from './redux/store.js';
-import AuthContext from './contexts/Auth.js';
+import AuthContext from './contexts/AuthContext.js';
 import auth from './utils/auth.js';
 
 if (process.env.NODE_ENV !== 'production') {
