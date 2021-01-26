@@ -1,6 +1,7 @@
 import React from 'react';
 import Channels from './components/channels/Channels.jsx';
 import MessagesList from './components/messages/MessagesList.jsx';
+import SendMessageForm from './components/messages/SendMessageForm.jsx';
 
 const App = () => (
   <div className="row h-100 pb-3">
@@ -13,15 +14,7 @@ const App = () => (
           <MessagesList />
         </div>
         <div className="mt-auto">
-          <form noValidate="" className="">
-            <div className="form-group">
-              <div className="input-group">
-                <input name="body" aria-label="body" className="mr-2 form-control" value="" />
-                <button aria-label="submit" type="submit" className="btn btn-primary">Submit</button>
-                <div className="d-block invalid-feedback">&nbsp;</div>
-              </div>
-            </div>
-          </form>
+          <SendMessageForm />
         </div>
       </div>
     </div>
