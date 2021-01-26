@@ -1,5 +1,6 @@
 import React from 'react';
 import Channels from './components/channels/Channels.jsx';
+import MessagesList from './components/messages/MessagesList.jsx';
 
 const App = () => (
   <div className="row h-100 pb-3">
@@ -9,10 +10,7 @@ const App = () => (
     <div className="col h-100">
       <div className="d-flex flex-column h-100">
         <div id="messages=box" className="chat-messages overflow-auto mb-3">
-          <div className="text-break">
-            <b>Jolie_DAmore71</b>
-            : fsdfgsdfg
-          </div>
+          <MessagesList />
         </div>
         <div className="mt-auto">
           <form noValidate="" className="">
