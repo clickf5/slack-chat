@@ -10,6 +10,8 @@ import '../assets/application.scss';
 
 import App from './App.jsx';
 import getStore from './redux/store.js';
+import AuthContext from './contexts/Auth.js';
+import auth from './utils/auth.js';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
@@ -17,9 +19,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 const store = getStore();
 
+const nickname = auth();
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <AuthContext.Provider value={{ nickname }}>
+      <App />
+    </AuthContext.Provider>
   </Provider>,
   document.getElementById('chat'),
 );
