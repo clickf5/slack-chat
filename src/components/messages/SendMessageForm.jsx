@@ -26,7 +26,6 @@ const SendMessageForm = () => {
       await axios.post(channelMessagesPath, { data });
       dispatch(addMessage(message));
       resetForm({});
-      setSubmitting(false);
     } catch (e) {
       console.log(e);
     }
