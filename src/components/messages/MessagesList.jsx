@@ -17,7 +17,7 @@ const MessagesList = (props) => {
       <b>{message.nickname}</b>
       :
       {' '}
-      {message.text}
+      {message.body}
     </div>
   ));
 

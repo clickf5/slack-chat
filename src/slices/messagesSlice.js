@@ -4,13 +4,14 @@ import { uniqueId } from 'lodash';
 const messagesSlice = createSlice({
   name: 'messages',
   initialState: [],
-  redusers: {
+  reducers: {
     addMessage: (state, action) => {
-      const { text, userName } = action.payload;
+      const { body, nickname, channelId } = action.payload;
       state.push({
         id: uniqueId(),
-        text,
-        userName,
+        body,
+        nickname,
+        channelId,
       });
     },
   },
