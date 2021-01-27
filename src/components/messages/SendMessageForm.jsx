@@ -1,31 +1,31 @@
 import React, { useContext } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import { addMessage } from '../../slices/messagesSlice';
-import AuthContext from '../../contexts/AuthContext.js';
+import AuthContext from '../../contexts/AuthContext';
 
-const mapStateToProps = (state) => {
-  const { currentChannelId } = state;
-  return { currentChannelId };
-};
-
-const mapActionToProps = {
-  add: addMessage,
-};
-
-const SendMessageForm = (props) => {
-  const { add, currentChannelId } = props;
+const SendMessageForm = () => {
   const { nickname } = useContext(AuthContext);
+
+  const dispatch = useDispatch();
+
+  const currentChannelId = useSelector((state) => state.currentChannelId);
+
+  const initialValues = {
+    body: '',
+  };
+
+  const onSubmit = (values, { resetForm }) => {
+    const message = { ...values, nickname, channelId: currentChannelId };
+    dispatch(addMessage(message));
+    resetForm({});
+  };
+
   const formik = useFormik({
-    initialValues: {
-      body: '',
-    },
-    onSubmit: (values) => {
-      const message = { ...values, nickname, channelId: currentChannelId };
-      // alert(JSON.stringify(message, null, 2));
-      add(message);
-    },
+    initialValues,
+    onSubmit,
   });
+
   return (
     <form noValidate="" className="" onSubmit={formik.handleSubmit}>
       <div className="form-group">
@@ -45,4 +45,4 @@ const SendMessageForm = (props) => {
   );
 };
 
-export default connect(mapStateToProps, mapActionToProps)(SendMessageForm);
+export default SendMessageForm;

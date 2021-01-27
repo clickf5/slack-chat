@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 const MessagesList = (props) => {
   const { messages } = props;
   const renderedMessages = messages.map((message) => (
-    <div className="text-break">
+    <div className="text-break" key={message.id}>
       <b>{message.nickname}</b>
       :
       {' '}

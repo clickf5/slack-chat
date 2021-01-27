@@ -7,12 +7,13 @@ const messagesSlice = createSlice({
   reducers: {
     addMessage: (state, action) => {
       const { body, nickname, channelId } = action.payload;
-      state.push({
+      const message = {
         id: uniqueId(),
         body,
         nickname,
         channelId,
-      });
+      };
+      return [...state, message];
     },
   },
 });
