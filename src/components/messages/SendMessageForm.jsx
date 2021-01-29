@@ -39,7 +39,7 @@ const SendMessageForm = (props) => {
       const message = { ...values, nickname, channelId: currentChannelId };
       const data = { attributes: message };
       await axios.post(channelMessagesPath, { data });
-      addMessage(message);
+      // addMessage(message);
       resetForm({});
       inputBody.current.focus();
     } catch (e) {
