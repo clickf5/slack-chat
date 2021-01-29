@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import cn from 'classnames';
-import * as actions from '../../slices/messagesSlice';
 import AuthContext from '../../contexts/AuthContext';
 import routes from '../../routes';
 
@@ -15,12 +14,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const actionCreators = {
-  addMessage: actions.addMessage,
-};
-
 const SendMessageForm = (props) => {
-  const { currentChannelId, addMessage } = props;
+  const { currentChannelId} = props;
   const channelMessagesPath = routes.channelMessagesPath(currentChannelId);
   const { nickname } = useContext(AuthContext);
 
@@ -78,4 +73,4 @@ const SendMessageForm = (props) => {
   );
 };
 
-export default connect(mapStateToProps, actionCreators)(SendMessageForm);
+export default connect(mapStateToProps)(SendMessageForm);
