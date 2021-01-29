@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 };
 
 const SendMessageForm = (props) => {
-  const { currentChannelId} = props;
+  const { currentChannelId } = props;
   const channelMessagesPath = routes.channelMessagesPath(currentChannelId);
   const { nickname } = useContext(AuthContext);
 
