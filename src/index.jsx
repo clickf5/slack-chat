@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-import io from 'socket.io-client';
+import { io } from 'socket.io-client';
 
 import '../assets/application.scss';
 
