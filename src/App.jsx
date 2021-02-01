@@ -1,7 +1,7 @@
 import React from 'react';
 import Channels from './components/channels/Channels';
 import MessagesListContaier from './components/messages/MessagesListContainer';
-import SendMessageForm from './components/messages/SendMessageForm';
+import SendMessageFormContainer from './components/messages/SendMessageFormContainer';
 
 const App = () => (
   <div className="row h-100 pb-3">
@@ -14,7 +14,7 @@ const App = () => (
           <MessagesListContaier />
         </div>
         <div className="mt-auto">
-          <SendMessageForm />
+          <SendMessageFormContainer />
         </div>
       </div>
     </div>

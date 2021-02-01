@@ -1,46 +1,13 @@
-import React, { useContext, useRef, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
-import axios from 'axios';
 import cn from 'classnames';
-import AuthContext from '../../contexts/AuthContext';
-import routes from '../../routes';
-
-const mapStateToProps = (state) => {
-  const { currentChannelId } = state;
-
-  return {
-    currentChannelId,
-  };
-};
 
 const SendMessageForm = (props) => {
-  const { currentChannelId } = props;
-  const channelMessagesPath = routes.channelMessagesPath(currentChannelId);
-  const { nickname } = useContext(AuthContext);
+  const { initialValues, onSubmit, inputBodyRef } = props;
 
-  const inputBody = useRef(null);
   useEffect(() => {
-    inputBody.current.focus();
+    inputBodyRef.current.focus();
   });
-
-  const initialValues = {
-    body: '',
-  };
-
-  const onSubmit = async (values, { resetForm, setSubmitting, setErrors }) => {
-    try {
-      setSubmitting(true);
-      const message = { ...values, nickname, channelId: currentChannelId };
-      const data = { attributes: message };
-      await axios.post(channelMessagesPath, { data });
-      // addMessage(message);
-      resetForm({});
-      inputBody.current.focus();
-    } catch (e) {
-      setErrors({ body: 'Network Error' });
-    }
-  };
 
   const formik = useFormik({
     initialValues,
@@ -63,7 +30,7 @@ const SendMessageForm = (props) => {
             className={inputBodyClass}
             value={formik.values.body}
             onChange={formik.handleChange}
-            ref={inputBody}
+            ref={inputBodyRef}
           />
           <button aria-label="submit" type="submit" className="btn btn-primary" disabled={formik.isSubmitting}>Submit</button>
           <div className="d-block invalid-feedback">{formik.errors.body}</div>
@@ -73,4 +40,4 @@ const SendMessageForm = (props) => {
   );
 };
 
-export default connect(mapStateToProps)(SendMessageForm);
+export default SendMessageForm;
