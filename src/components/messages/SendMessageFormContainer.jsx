@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -15,7 +15,9 @@ const mapStateToProps = (state) => {
 
 const SendMessageFormContainer = (props) => {
   const { currentChannelId } = props;
+
   const channelMessagesPath = routes.channelMessagesPath(currentChannelId);
+
   const { nickname } = useContext(AuthContext);
 
   const inputBodyRef = useRef(null);
@@ -45,6 +47,10 @@ const SendMessageFormContainer = (props) => {
   const formik = useFormik({
     initialValues,
     onSubmit,
+  });
+
+  useEffect(() => {
+    inputBodyRef.current.focus();
   });
 
   return (

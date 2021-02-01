@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import cn from 'classnames';
 
 const SendMessageForm = (props) => {
   const {
     handleSubmit, handleChange, values, errors, isSubmitting, isValid, inputBodyRef,
   } = props;
-
-  useEffect(() => {
-    inputBodyRef.current.focus();
-  });
 
   const inputBodyClass = cn(
     'mr-2',
