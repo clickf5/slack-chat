@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MessagesList from './MessagesList';
+import { getFilteredMessages } from '../../selectors';
 
 const mapStateToProps = (state) => {
-  const { messages, currentChannelId } = state;
-  const filteredMessages = messages.filter((message) => (message.channelId === currentChannelId));
   const props = {
-    messages: filteredMessages,
+    messages: getFilteredMessages(state),
   };
   return props;
 };
