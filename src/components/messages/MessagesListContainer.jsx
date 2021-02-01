@@ -13,7 +13,6 @@ const mapStateToProps = (state) => {
 
 const MessagesListContainer = (props) => {
   const { messages } = props;
-
   return <MessagesList messages={messages} />;
 };
 
