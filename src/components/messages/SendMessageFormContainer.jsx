@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { useFormik } from 'formik';
 import AuthContext from '../../contexts/AuthContext';
 import routes from '../../routes';
 import SendMessageForm from './SendMessageForm';
@@ -41,10 +42,19 @@ const SendMessageFormContainer = (props) => {
     }
   };
 
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+  });
+
   return (
     <SendMessageForm
-      initialValues={initialValues}
-      onSubmit={onSubmit}
+      handleSubmit={formik.handleSubmit}
+      handleChange={formik.handleChange}
+      values={formik.values}
+      errors={formik.errors}
+      isSubmitting={formik.isSubmitting}
+      isValid={formik.isValid}
       inputBodyRef={inputBodyRef}
     />
   );

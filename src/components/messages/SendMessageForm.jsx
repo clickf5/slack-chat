@@ -1,39 +1,35 @@
 import React, { useEffect } from 'react';
-import { useFormik } from 'formik';
 import cn from 'classnames';
 
 const SendMessageForm = (props) => {
-  const { initialValues, onSubmit, inputBodyRef } = props;
+  const {
+    handleSubmit, handleChange, values, errors, isSubmitting, isValid, inputBodyRef,
+  } = props;
 
   useEffect(() => {
     inputBodyRef.current.focus();
   });
 
-  const formik = useFormik({
-    initialValues,
-    onSubmit,
-  });
-
   const inputBodyClass = cn(
     'mr-2',
     'form-control',
-    { 'is-invalid': !formik.isValid },
+    { 'is-invalid': !isValid },
   );
 
   return (
-    <form noValidate="" className="" onSubmit={formik.handleSubmit}>
+    <form noValidate="" className="" onSubmit={handleSubmit}>
       <div className="form-group">
         <div className="input-group">
           <input
             name="body"
             aria-label="body"
             className={inputBodyClass}
-            value={formik.values.body}
-            onChange={formik.handleChange}
+            value={values.body}
+            onChange={handleChange}
             ref={inputBodyRef}
           />
-          <button aria-label="submit" type="submit" className="btn btn-primary" disabled={formik.isSubmitting}>Submit</button>
-          <div className="d-block invalid-feedback">{formik.errors.body}</div>
+          <button aria-label="submit" type="submit" className="btn btn-primary" disabled={isSubmitting}>Submit</button>
+          <div className="d-block invalid-feedback">{errors.body}</div>
         </div>
       </div>
     </form>
