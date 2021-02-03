@@ -6,6 +6,10 @@ import SendMessageFormContainer from './components/messages/SendMessageFormConta
 const App = () => (
   <div className="row h-100 pb-3">
     <div className="col-3 border-right">
+      <div className="d-flex mb-2">
+        <span>Channels</span>
+        <button type="button" className="ml-auto p-0 btn btn-link">+</button>
+      </div>
       <Channels />
     </div>
     <div className="col h-100">

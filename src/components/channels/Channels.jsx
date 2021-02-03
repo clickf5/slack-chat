@@ -29,10 +29,6 @@ const Channels = (props) => {
   const renderedChannels = renderChannels(channels, currentChannelId);
   return (
     <>
-      <div className="d-flex mb-2">
-        <span>Channels</span>
-        <button type="button" className="ml-auto p-0 btn btn-link">+</button>
-      </div>
       <ul className="nav flex-column nav-pills nav-fill">
         {renderedChannels}
       </ul>
