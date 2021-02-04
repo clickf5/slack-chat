@@ -20,7 +20,13 @@ const renderChannels = (channels, currentChannelId, handleClick) => channels.map
   const { id, name } = channel;
   const isPrimary = (id === currentChannelId);
   return (
-    <Channel key={id} id={id} name={name} isPrimary={isPrimary} handleClick={handleClick} />
+    <Channel
+      key={id}
+      id={id}
+      name={name}
+      isPrimary={isPrimary}
+      handleClick={handleClick}
+    />
   );
 });
 
