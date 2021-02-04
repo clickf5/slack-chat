@@ -27,7 +27,6 @@ const nickname = auth();
 const socket = io();
 
 socket.on('newMessage', (data) => {
-  console.log(data);
   const message = data.data.attributes;
   store.dispatch(actions.addMessage(message));
 });
