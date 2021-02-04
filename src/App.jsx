@@ -1,5 +1,5 @@
 import React from 'react';
-import Channels from './components/channels/Channels';
+import ChannelsList from './components/channels/ChannelsList';
 import MessagesListContaier from './components/messages/MessagesListContainer';
 import SendMessageFormContainer from './components/messages/SendMessageFormContainer';
 
@@ -10,7 +10,7 @@ const App = () => (
         <span>Channels</span>
         <button type="button" className="ml-auto p-0 btn btn-link">+</button>
       </div>
-      <Channels />
+      <ChannelsList />
     </div>
     <div className="col h-100">
       <div className="d-flex flex-column h-100">
