@@ -3,11 +3,13 @@ import gon from 'gon';
 import channelsReducer from '../slices/channelsSlice';
 import currentChannelIdReducer from '../slices/currentChannelIdSlice';
 import messagesReducer from '../slices/messagesSlice';
+import modalReducer from '../slices/modalSlice';
 
 const reducer = {
   channels: channelsReducer,
   currentChannelId: currentChannelIdReducer,
   messages: messagesReducer,
+  modal: modalReducer,
 };
 
 const preloadedState = {
