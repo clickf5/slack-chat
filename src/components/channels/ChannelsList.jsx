@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCurrentChannelId } from '../../slices/currentChannelIdSlice';
+import { setCurrentChannelId } from '../../slices/channelsInfoSlice';
 import Channel from './Channel';
 
 const mapStateToProps = (state) => {
-  const { channels, currentChannelId } = state;
+  const { channelsInfo: { channels, currentChannelId } } = state;
   const props = {
     channels,
     currentChannelId,

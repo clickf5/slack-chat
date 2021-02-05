@@ -7,7 +7,7 @@ import routes from '../../routes';
 import SendMessageForm from './SendMessageForm';
 
 const mapStateToProps = (state) => {
-  const { currentChannelId } = state;
+  const { channelsInfo: { currentChannelId } } = state;
   return {
     currentChannelId,
   };
