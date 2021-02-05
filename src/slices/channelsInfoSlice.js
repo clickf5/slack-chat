@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { uniqueId } from 'lodash';
 
-const channelsSlice = createSlice({
+const channelsInfoSlice = createSlice({
   name: 'channels',
   initialState: {
     channels: [],
@@ -22,6 +22,6 @@ const channelsSlice = createSlice({
   },
 });
 
-export const { addChannel, setCurrentChannelId } = channelsSlice.actions;
+export const { addChannel, setCurrentChannelId } = channelsInfoSlice.actions;
 
-export default channelsSlice.reducer;
+export default channelsInfoSlice.reducer;
