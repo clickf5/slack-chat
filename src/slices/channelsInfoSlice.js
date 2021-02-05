@@ -3,7 +3,10 @@ import { uniqueId } from 'lodash';
 
 const channelsSlice = createSlice({
   name: 'channels',
-  initialState: {},
+  initialState: {
+    channels: [],
+    currentChannelId: 1,
+  },
   reducers: {
     addChannel: (state, action) => {
       const { name } = action.payload;
