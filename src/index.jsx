@@ -14,7 +14,8 @@ import getStore from './redux/store.js';
 import AuthContext from './contexts/AuthContext.js';
 import auth from './utils/auth.js';
 
-import * as actions from './slices/messagesSlice';
+import { addMessage } from './slices/messagesSlice';
+import { addChannel } from './slices/channelsInfoSlice';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
@@ -28,7 +29,12 @@ const socket = io();
 
 socket.on('newMessage', (data) => {
   const message = data.data.attributes;
-  store.dispatch(actions.addMessage(message));
+  store.dispatch(addMessage(message));
+});
+
+socket.on('newChannel', (data) => {
+  const channel = data.data.attributes;
+  store.dispatch(addChannel(channel));
 });
 
 ReactDOM.render(

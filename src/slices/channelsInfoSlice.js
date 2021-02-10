@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { uniqueId } from 'lodash';
 
 const channelsInfoSlice = createSlice({
   name: 'channels',
@@ -9,9 +8,10 @@ const channelsInfoSlice = createSlice({
   },
   reducers: {
     addChannel: (state, action) => {
-      const { name } = action.payload;
-      const id = uniqueId();
-      state.push({ id, name, removable: true });
+      const channel = action.payload;
+      return {
+        ...state, channels: [...state.channels, channel],
+      };
     },
     setCurrentChannelId: (state, action) => {
       const { id } = action.payload;
