@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Nav } from 'react-bootstrap';
 import { setCurrentChannelId } from '../../slices/channelsInfoSlice';
 import Channel from './Channel';
 
@@ -17,7 +18,7 @@ const actionCreators = {
 };
 
 const renderChannels = (channels, currentChannelId, handleClick) => channels.map((channel) => {
-  const { id, name } = channel;
+  const { id, name, removable } = channel;
   const isPrimary = (id === currentChannelId);
   return (
     <Channel
@@ -25,6 +26,7 @@ const renderChannels = (channels, currentChannelId, handleClick) => channels.map
       id={id}
       name={name}
       isPrimary={isPrimary}
+      isRemovable={removable}
       handleClick={handleClick}
     />
   );
@@ -33,11 +35,9 @@ const renderChannels = (channels, currentChannelId, handleClick) => channels.map
 const ChannelsList = (props) => {
   const { channels, currentChannelId, handleClick } = props;
   return (
-    <>
-      <ul className="nav flex-column nav-pills nav-fill">
-        {renderChannels(channels, currentChannelId, handleClick)}
-      </ul>
-    </>
+    <Nav variant="pills" className="flex-column" fill>
+      {renderChannels(channels, currentChannelId, handleClick)}
+    </Nav>
   );
 };
 
