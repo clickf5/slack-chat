@@ -18,7 +18,7 @@ const AddChannelModal = (props) => {
 
   return (
     <Modal show={isOpened}>
-      <Modal.Header closeButton={handleClose}>
+      <Modal.Header closeButton={() => handleClose()}>
         <Modal.Title>Add channel</Modal.Title>
       </Modal.Header>
 
@@ -37,7 +37,7 @@ const AddChannelModal = (props) => {
               {errors.name}
             </FormControl.Feedback>
             <div className="d-flex justify-content-end">
-              <Button className="mr-2" variant="secondary" type="button" onClick={handleClose}>Cancel</Button>
+              <Button className="mr-2" variant="secondary" type="button" onClick={() => handleClose()}>Cancel</Button>
               <Button variant="primary" type="submit" disabled={isSubmitting}>Submit</Button>
             </div>
           </FormGroup>
