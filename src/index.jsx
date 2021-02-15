@@ -15,7 +15,7 @@ import AuthContext from './contexts/AuthContext.js';
 import auth from './utils/auth.js';
 
 import { addMessage } from './slices/messagesSlice';
-import { addChannel, renameChannel } from './slices/channelsInfoSlice';
+import { addChannel, renameChannel, removeChannel } from './slices/channelsInfoSlice';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
@@ -40,6 +40,11 @@ socket.on('newChannel', ({ data }) => {
 socket.on('renameChannel', ({ data }) => {
   const channel = data.attributes;
   store.dispatch(renameChannel(channel));
+});
+
+socket.on('removeChannel', ({ data }) => {
+  const channelId = data.id;
+  store.dispatch(removeChannel({ channelId }));
 });
 
 ReactDOM.render(

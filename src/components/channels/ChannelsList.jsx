@@ -24,6 +24,7 @@ const renderChannels = (channels, currentChannelId, handleClick, handleOpen) => 
     const { id, name, removable } = channel;
     const isPrimary = (id === currentChannelId);
     const openRename = () => handleOpen({ type: 'renameChannel', extra: { channelId: id } });
+    const openRemove = () => handleOpen({ type: 'removeChannel', extra: { channelId: id } });
     return (
       <Channel
         key={id}
@@ -32,6 +33,7 @@ const renderChannels = (channels, currentChannelId, handleClick, handleOpen) => 
         isRemovable={removable}
         handleClick={() => handleClick({ id })}
         openRename={openRename}
+        openRemove={openRemove}
       />
     );
   });

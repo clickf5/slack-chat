@@ -5,7 +5,7 @@ import {
 
 const Channel = (props) => {
   const {
-    name, isPrimary, handleClick, isRemovable, openRename,
+    name, isPrimary, handleClick, isRemovable, openRename, openRemove,
   } = props;
   const variant = isPrimary ? 'primary' : 'light';
 
@@ -29,7 +29,7 @@ const Channel = (props) => {
             className="flex-grow-0"
           />
           <Dropdown.Menu>
-            <Dropdown.Item>Remove</Dropdown.Item>
+            <Dropdown.Item onClick={openRemove}>Remove</Dropdown.Item>
             <Dropdown.Item onClick={openRename}>Rename</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
