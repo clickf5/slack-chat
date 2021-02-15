@@ -17,5 +17,5 @@ export const getChannelInfo = createSelector(
   getChannels,
   getModalExtra,
   (channels, { channelId }) => channels
-    .filter(({ id }) => id === channelId),
+    .filter(({ id }) => id === channelId)[0],
 );
