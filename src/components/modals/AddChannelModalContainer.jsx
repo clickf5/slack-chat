@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import axios from 'axios';
+import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { connect } from 'react-redux';
 import { closeModal } from '../../slices/modalSlice';
@@ -42,8 +43,17 @@ const AddChannelModalContainer = (props) => {
       setErrors({ name: 'Network Error' });
     }
   };
+
+  const validationSchema = yup.object().shape({
+    name: yup.string()
+      .min(3, 'Must be 3 to 20 characters')
+      .max(20, 'Must be 3 to 20 characters')
+      .required('Required'),
+  });
+
   const formik = useFormik({
     initialValues,
+    validationSchema,
     onSubmit,
   });
 
