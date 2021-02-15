@@ -63,6 +63,7 @@ const AddChannelModalContainer = (props) => {
 
   return (
     <AddChannelModal
+      title="Add channel"
       handleSubmit={formik.handleSubmit}
       handleChange={formik.handleChange}
       values={formik.values}

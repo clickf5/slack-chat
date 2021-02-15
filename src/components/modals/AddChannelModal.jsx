@@ -5,6 +5,7 @@ import {
 
 const AddChannelModal = (props) => {
   const {
+    title,
     handleSubmit,
     handleChange,
     values,
@@ -19,7 +20,7 @@ const AddChannelModal = (props) => {
   return (
     <Modal show={isOpened} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Add channel</Modal.Title>
+        <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
