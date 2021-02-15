@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Nav } from 'react-bootstrap';
 import { setCurrentChannelId } from '../../slices/channelsInfoSlice';
+import { openModal } from '../../slices/modalSlice';
 import Channel from './Channel';
 
 const mapStateToProps = (state) => {
@@ -15,28 +16,33 @@ const mapStateToProps = (state) => {
 
 const actionCreators = {
   handleClick: setCurrentChannelId,
+  handleOpen: openModal,
 };
 
-const renderChannels = (channels, currentChannelId, handleClick) => channels.map((channel) => {
-  const { id, name, removable } = channel;
-  const isPrimary = (id === currentChannelId);
-  return (
-    <Channel
-      key={id}
-      id={id}
-      name={name}
-      isPrimary={isPrimary}
-      isRemovable={removable}
-      handleClick={handleClick}
-    />
-  );
-});
+const renderChannels = (channels, currentChannelId, handleClick, handleOpen) => channels
+  .map((channel) => {
+    const { id, name, removable } = channel;
+    const isPrimary = (id === currentChannelId);
+    const openRename = () => handleOpen({ type: 'renameChannel', extra: { channelId: id } });
+    return (
+      <Channel
+        key={id}
+        name={name}
+        isPrimary={isPrimary}
+        isRemovable={removable}
+        handleClick={() => handleClick({ id })}
+        openRename={openRename}
+      />
+    );
+  });
 
 const ChannelsList = (props) => {
-  const { channels, currentChannelId, handleClick } = props;
+  const {
+    channels, currentChannelId, handleClick, handleOpen,
+  } = props;
   return (
     <Nav variant="pills" className="flex-column" fill>
-      {renderChannels(channels, currentChannelId, handleClick)}
+      {renderChannels(channels, currentChannelId, handleClick, handleOpen)}
     </Nav>
   );
 };

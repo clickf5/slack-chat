@@ -5,7 +5,7 @@ import {
 
 const Channel = (props) => {
   const {
-    id, name, isPrimary, handleClick, isRemovable,
+    id, name, isPrimary, handleClick, isRemovable, openRename,
   } = props;
   const variant = isPrimary ? 'primary' : 'light';
 
@@ -18,7 +18,7 @@ const Channel = (props) => {
         >
           <Button
             variant={variant}
-            onClick={() => handleClick({ id })}
+            onClick={handleClick}
             className="flex-grow-1 text-left nav-link"
           >
             {name}
@@ -30,7 +30,7 @@ const Channel = (props) => {
           />
           <Dropdown.Menu>
             <Dropdown.Item>Remove</Dropdown.Item>
-            <Dropdown.Item>Rename</Dropdown.Item>
+            <Dropdown.Item onClick={openRename}>Rename</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </Nav.Item>
@@ -42,7 +42,7 @@ const Channel = (props) => {
       <Button
         block
         variant={variant}
-        onClick={() => handleClick({ id })}
+        onClick={handleClick}
         className="mb-2 text-left nav-link"
       >
         {name}
