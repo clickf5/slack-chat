@@ -3,7 +3,7 @@ import {
   Modal, FormGroup, FormControl, Button,
 } from 'react-bootstrap';
 
-const AddChannelModal = (props) => {
+const ChannelModal = (props) => {
   const {
     title,
     handleSubmit,
@@ -48,4 +48,4 @@ const AddChannelModal = (props) => {
   );
 };
 
-export default AddChannelModal;
+export default ChannelModal;

@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import { connect } from 'react-redux';
 import { closeModal } from '../../slices/modalSlice';
 import routes from '../../routes';
-import AddChannelModal from './AddChannelModal';
+import ChannelModal from './ChannelModal';
 
 const mapStateToProps = (state) => {
   const { modal: { isOpened } } = state;
@@ -62,7 +62,7 @@ const AddChannelModalContainer = (props) => {
   });
 
   return (
-    <AddChannelModal
+    <ChannelModal
       title="Add channel"
       handleSubmit={formik.handleSubmit}
       handleChange={formik.handleChange}
