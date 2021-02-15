@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { uniqueId } from 'lodash';
+import { removeChannel } from './channelsInfoSlice';
 
 const messagesSlice = createSlice({
   name: 'messages',
@@ -14,6 +15,12 @@ const messagesSlice = createSlice({
         channelId,
       };
       return [...state, message];
+    },
+  },
+  extraReducers: {
+    [removeChannel]: (state, action) => {
+      const { channelId } = action.payload;
+      return state.filter((message) => message.channelId !== channelId);
     },
   },
 });
