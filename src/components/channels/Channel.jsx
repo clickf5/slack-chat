@@ -5,7 +5,7 @@ import {
 
 const Channel = (props) => {
   const {
-    id, name, isPrimary, handleClick, isRemovable, openRename,
+    name, isPrimary, handleClick, isRemovable, openRename,
   } = props;
   const variant = isPrimary ? 'primary' : 'light';
 
