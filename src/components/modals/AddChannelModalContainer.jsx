@@ -71,7 +71,7 @@ const AddChannelModalContainer = (props) => {
       isValid={formik.isValid}
       inputNameRef={inputNameRef}
       isOpened={isOpened}
-      handleClose={handleClose}
+      handleClose={() => handleClose()}
     />
   );
 };
