@@ -6,8 +6,10 @@ import { Provider } from 'react-redux';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import { io } from 'socket.io-client';
-
 import '../assets/application.scss';
+
+// @ts-ignore
+import gon from 'gon';
 
 import App from './App.jsx';
 import getStore from './redux/store.js';
@@ -21,7 +23,17 @@ if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
 }
 
-const store = getStore();
+const { channels, currentChannelId, messages } = gon;
+
+const preloadedState = {
+  channelsInfo: {
+    channels,
+    currentChannelId,
+  },
+  messages,
+};
+
+const store = getStore(preloadedState);
 
 const nickname = auth();
 
